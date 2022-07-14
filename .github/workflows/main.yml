@@ -79,10 +79,9 @@ jobs:
       # set up artifact to upload screenshots for failed tests
       - name: Upload screenshots
         uses: actions/upload-artifact@v3
-        if: failure()
         with:
             name: screenshots
-            path: electron/cypress/
+            path: electron/cypress/screenshots
 
       # run cypress tests
       - name: Cypress e2e tests
