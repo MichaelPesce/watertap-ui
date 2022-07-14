@@ -26,9 +26,8 @@ jobs:
           cache-dependency-path: './electron/ui/package-lock.json'
 
       # install electron
-      - name: Use Node.js ${{ matrix.node-version }} electron
+      - name: install electron
         working-directory: ./electron
-        with:
       - run: npm ci
 
       # install frontend and test
