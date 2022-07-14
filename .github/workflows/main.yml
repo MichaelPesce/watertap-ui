@@ -19,25 +19,25 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # # set up node
-      # - name: Use Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-      #     cache: 'npm'
-      #     cache-dependency-path: './electron/ui/package-lock.json'
+      # set up node
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: './electron/ui/package-lock.json'
 
-      # # install electron
-      # - name: install electron
-      #   working-directory: ./electron
-      #   run: npm ci
+      # install electron
+      - name: install electron
+        working-directory: ./electron
+        run: npm ci
 
-      # # install frontend and test
-      # - name: npm install & test
-      #   working-directory: ./electron/ui
-      #   run: |
-      #     npm ci
-      #     npm test
+      # install frontend and test
+      - name: npm install & test
+        working-directory: ./electron/ui
+        run: |
+          npm ci
+          npm test
 
       # set up python
       - name: Set up Python
