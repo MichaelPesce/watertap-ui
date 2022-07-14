@@ -28,7 +28,7 @@ jobs:
       # install electron
       - name: install electron
         working-directory: ./electron
-      - run: npm ci
+        run: npm ci
 
       # install frontend and test
       - name: npm install & test
