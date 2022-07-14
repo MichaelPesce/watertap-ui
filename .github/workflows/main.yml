@@ -76,9 +76,15 @@ jobs:
         working-directory: electron/ui
         run: npm start &
 
+      # run cypress tests
+      - name: Cypress e2e tests
+        working-directory: electron
+        run: npx cypress run
+
       # set up artifact to upload screenshots for failed tests
       - name: Upload screenshots
         uses: actions/upload-artifact@v3
+        if: failure()
         with:
             name: screenshots
             path: electron/cypress/screenshots/
@@ -89,8 +95,3 @@ jobs:
         with:
             name: videoes
             path: electron/cypress/videos/
-
-      # run cypress tests
-      - name: Cypress e2e tests
-        working-directory: electron
-        run: npx cypress run
