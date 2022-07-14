@@ -3,35 +3,25 @@ name: App testing CI
 on:
   push:
     branches: [ "UI-testing" ]
+  pull_request:
+    branches: [ "UI-testing" ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    defaults:
+       run:
+         working-directory: ./electron/ui/
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
-        python-version: ['3.x', 'pypy3.7', 'pypy3.8' ]
+        node-version: [12.x, 14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
-
-    # install electron
-    - name: Use Node.js ${{ matrix.node-version }} electron
-      working-directory: ./electron
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        cache-dependency-path: './electron/package-lock.json'
-    - run: npm ci
-    # - run: npm run build --if-present
-    - run: npm test
-
-    # install frontend
-    - name: Use Node.js ${{ matrix.node-version }} frontend
-      working-directory: ./electron/ui
+    - run: ls -a
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
@@ -40,14 +30,3 @@ jobs:
     - run: npm ci
     # - run: npm run build --if-present
     - run: npm test
-
-  # install backend
-  - name: Set up Python
-    uses: actions/setup-python@v4
-    working-directory: ./backend
-    with:
-      python-version: ${{ matrix.python-version }}
-      architecture: x64
-      cache: 'pip'
-      cache-dependency-path: './backend/requirements.txt'  
-  - run: pip install -r requirements.txt
