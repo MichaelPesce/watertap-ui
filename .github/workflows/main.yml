@@ -69,7 +69,7 @@ jobs:
       # run backend server
       - name: run backend server
         working-directory: backend/app
-        run: uvicorn main:app --reload --host 0.0.0.0 &
+        run: uvicorn main:app --reload --host 0.0.0.0 --port 8001 &
 
       # run frontend server
       - name: run frontend
@@ -81,19 +81,19 @@ jobs:
         working-directory: electron
         run: npx cypress run
 
-      # set up artifact to upload screenshots for failed tests
-      - name: Upload screenshots
+      # upload screenshots & videos for failed tests
+      - name: Upload screenshots & videos on failure
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-            name: screenshots
+            name: cypress_results
             path: |
               electron/cypress/screenshots/
               electron/cypress/videos/
 
-      # set up artifact to upload videos
+      # upload videos if tests are successful
       - name: Upload videos
         uses: actions/upload-artifact@v3
         with:
-            name: videos
+            name: cypress_results
             path: electron/cypress/videos/
