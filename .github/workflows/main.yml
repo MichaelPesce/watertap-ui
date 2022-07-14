@@ -74,12 +74,16 @@ jobs:
       # run frontend server
       - name: run frontend
         working-directory: electron/ui
-        run: npm start
+        run: npm start &
 
       # run cypress tests
-      - name: Cypress run
+      - name: Cypress e2e tests
         uses: cypress-io/github-action@v4
         with:
-          record: true
+          start: npx cypress run
           wait-on: http://localhost:3000
+          browser: chrome
+          record: true
           tag: node-${{ matrix.node }}
+          spec: electron/cypress/e2e/*
+          config-file: cypress.config.js
