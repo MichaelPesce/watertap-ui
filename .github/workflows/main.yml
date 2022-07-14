@@ -87,11 +87,13 @@ jobs:
         if: failure()
         with:
             name: screenshots
-            path: electron/cypress/screenshots/
+            path: |
+              electron/cypress/screenshots/
+              electron/cypress/videos/
 
       # set up artifact to upload videos
       - name: Upload videos
         uses: actions/upload-artifact@v3
         with:
-            name: videoes
+            name: videos
             path: electron/cypress/videos/
