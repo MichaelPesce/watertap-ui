@@ -39,24 +39,30 @@ jobs:
       #     npm ci
       #     npm test
 
-      # # set up python
-      # - name: Set up Python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: ${{ matrix.python-version }}
-      #     architecture: x64
-      #     cache: 'pip'
-      #     cache-dependency-path: './backend/requirements.txt'  
+      # set up python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+          cache: 'pip'
+          cache-dependency-path: './backend/requirements.txt'  
 
       # # install backend
       # - name: install backend
       #   working-directory: backend
       #   run: pip install -r requirements.txt
 
-      # install watertap
-      - name: install watertap
+      # clone watertap
+      - name: clone watertap
         run: |
           git clone https://github.com/watertap-org/watertap.git
           cd watertap
-          git checkout watershop-tutorial
+          git checkout workshop_tutorial
           pip install .
+
+      # - name: install watertap
+      #   working-directory: watertap
+      #   run: |
+      #     git checkout workshop_tutorial
+      #     pip install .
