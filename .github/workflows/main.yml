@@ -78,12 +78,5 @@ jobs:
 
       # run cypress tests
       - name: Cypress e2e tests
-        uses: cypress-io/github-action@v4
-        with:
-          start: npx cypress run
-          wait-on: http://localhost:3000
-          browser: chrome
-          record: true
-          tag: node-${{ matrix.node }}
-          spec: electron/cypress/e2e/*
-          config-file: cypress.config.js
+        working-directory: electron
+        run: npx cypress run
