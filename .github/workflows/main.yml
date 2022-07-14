@@ -76,6 +76,13 @@ jobs:
         working-directory: electron/ui
         run: npm start &
 
+      - name: Upload screenshots
+        uses: actions/upload-artifact@latest
+        if: failure()
+        with:
+            name: cypress-screenshots
+            path: electron/cypress/screenshots
+
       # run cypress tests
       - name: Cypress e2e tests
         working-directory: electron
