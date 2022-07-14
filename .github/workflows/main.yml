@@ -48,21 +48,25 @@ jobs:
           cache: 'pip'
           cache-dependency-path: './backend/requirements.txt'  
 
-      # # install backend
-      # - name: install backend
-      #   working-directory: backend
-      #   run: pip install -r requirements.txt
+      # install backend
+      - name: install backend
+        working-directory: backend
+        run: pip install -r requirements.txt
 
-      # clone watertap
-      - name: clone watertap
+      # clone & install watertap
+      - name: clone & install watertap
         run: |
           git clone https://github.com/watertap-org/watertap.git
           cd watertap
           git checkout workshop_tutorial
           pip install .
 
-      # - name: install watertap
-      #   working-directory: watertap
-      #   run: |
-      #     git checkout workshop_tutorial
-      #     pip install .
+      # get idaes extensions
+      - name: get idaes extensions
+        working-directory: backend/app
+        run: idaes get-extensions
+
+      # run backend server
+      - name: run backend server
+        working-directory: backend/app
+        run: uvicorn main:app --reload --host 0.0.0.0
