@@ -76,8 +76,9 @@ jobs:
         working-directory: electron/ui
         run: npm start &
 
+      # set up artifact to upload screenshots for failed tests
       - name: Upload screenshots
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
             name: cypress-screenshots
