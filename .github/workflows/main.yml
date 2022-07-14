@@ -82,7 +82,7 @@ jobs:
         run: npx cypress run
 
       # upload screenshots & videos
-      - name: Upload screenshots & videos on failure
+      - name: Upload artifact for screenshots & videos
         uses: actions/upload-artifact@v3
         with:
             name: cypress_results
