@@ -1,19 +1,14 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-name: Node.js CI
+name: App testing CI
 
 on:
   push:
-    branches: [ "UI-testing" ]
-  pull_request:
     branches: [ "UI-testing" ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    # defaults:
-    #    run:
-    #      working-directory: ./electron/ui/
+
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
