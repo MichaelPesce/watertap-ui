@@ -81,7 +81,14 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
             name: screenshots
-            path: electron/cypress/screenshots
+            path: electron/cypress/screenshots/
+
+      # set up artifact to upload videos
+      - name: Upload videos
+        uses: actions/upload-artifact@v3
+        with:
+            name: videoes
+            path: electron/cypress/videos/
 
       # run cypress tests
       - name: Cypress e2e tests
