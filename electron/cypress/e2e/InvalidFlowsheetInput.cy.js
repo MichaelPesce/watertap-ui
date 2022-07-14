@@ -20,7 +20,7 @@ describe('Invalid Input Test', () => {
 
         //find error message
         cy.findByRole('alert')
-        
+        cy.screenshot('end-test1')
     })
 
 })
