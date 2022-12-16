@@ -131,6 +131,10 @@ jobs:
         run: |
           pip uninstall -y idaes-pse && pip install idaes-pse==1.13
 
+      - name: List idaes directory contents
+        run: |
+          ls /home/runner/.idaes && ls /home/runner/.idaes/bin
+
       - name: Create idaes extensions installer
         run: |
           npm --prefix electron run get-extensions-installer
