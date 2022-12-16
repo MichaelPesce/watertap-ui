@@ -15,10 +15,9 @@ elif sys.platform == 'linux':
     (f'{idaes_path}/bin/libipopt.so', 'extensions/.idaes/bin/'), (f'{idaes_path}/bin/libpynumero_ASL.so', 'extensions/.idaes/bin/'),
     (f'{idaes_path}/bin/ipopt', 'extensions/.idaes/bin/'), (f'{idaes_path}/bin/couenne', 'extensions/.idaes/bin/'), 
     (f'{idaes_path}/bin/libsipopt.so', 'extensions/.idaes/bin/'), (f'{idaes_path}/bin/cbc', 'extensions/.idaes/bin/'), 
-    (f'{idaes_path}/bin/functions.so', 'extensions/.idaes/bin/'), 
+    (f'{idaes_path}/bin/functions.so', 'extensions/.idaes/bin/'), (f'{idaes_path}/bin/bonmin', 'extensions/.idaes/bin/'),
     (f'{idaes_path}/bin/license_lib.txt', 'extensions/.idaes/bin/'), (f'{idaes_path}/bin/k_aug', 'extensions/.idaes/bin/'), 
     (f'{idaes_path}/bin/version_solvers.txt', 'extensions/.idaes/bin/'), (f'{idaes_path}/bin/ipopt_l1', 'extensions/.idaes/bin/'), 
-    (f'{idaes_path}/bin/bonmin', 'extensions/.idaes/bin/'), (f'{idaes_path}/bin/swco2_external.so', 'extensions/.idaes/bin/'), 
     (f'{idaes_path}/bin/license.txt', 'extensions/.idaes/bin/'), (f'{idaes_path}/bin/ipopt_sens_l1', 'extensions/.idaes/bin/'), 
     (f'{idaes_path}/bin/clp', 'extensions/.idaes/bin/'), (f'{idaes_path}/bin/dot_sens', 'extensions/.idaes/bin/')]
 else:
