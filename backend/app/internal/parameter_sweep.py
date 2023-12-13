@@ -36,7 +36,7 @@ def run_analysis(
 ):
     flowsheet = import_module(flowsheet)
     try:
-        solve_function = flowsheet.solve
+        solve_function = flowsheet.solve_flowsheet
     except:
         solve_function = flowsheet.optimize
     outputs, optimize_kwargs, opt_function = set_up_sensitivity(
@@ -156,7 +156,7 @@ def run_parameter_sweep(flowsheet, info):
         results = run_analysis(
             m=flowsheet.fs_exp.m,
             # flowsheet=info.module[0:-3], # replace _ui instead?
-            flowsheet=info.module.replace("_ui", ""),
+            flowsheet=info.module,
             parameters=parameters,
             output_params=output_params,
             results_path=output_path,
