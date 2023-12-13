@@ -27,14 +27,14 @@ def set_up_sensitivity(m, solve, output_params):
 
 def run_analysis(
     m,
-    flowsheet,
+    flowsheet_module,
     parameters,
     output_params,
     results_path="output.csv",
     interpolate_nan_outputs=True,
     custom_do_param_sweep_kwargs=None,
 ):
-    flowsheet = import_module(flowsheet)
+    flowsheet = import_module(flowsheet_module)
     try:
         solve_function = flowsheet.solve_flowsheet
     except:
@@ -156,7 +156,7 @@ def run_parameter_sweep(flowsheet, info):
         results = run_analysis(
             m=flowsheet.fs_exp.m,
             # flowsheet=info.module[0:-3], # replace _ui instead?
-            flowsheet=info.module,
+            flowsheet_module=info.module,
             parameters=parameters,
             output_params=output_params,
             results_path=output_path,
